@@ -1,0 +1,30 @@
+
+---------------------------------------------------------------------------------------
+Tasks to bring us back up to the level of the PlayJam entry.
+---------------------------------------------------------------------------------------
+- Implement player death + explosion.
+
+
+---------------------------------------------------------------------------------------
+Task to expand and improve the game.
+---------------------------------------------------------------------------------------
+- Look to replace point grid with alternative water surface sprites?
+- Loading predefined levels from files.
+- Text-prompt system
+    - Potentially with profile image support for dialogue style tutorialization.
+    - Mockup potential character + text view.
+- Implement save progress (learn the sdk file saving/loading)
+- Design + Implement sonar overcharge + penalties.
+- Shop/Progression system? (upgrade sonar, engine, health, etc)
+- Dynamic (moving) threats, such as patrol boats, cthulu, etc.
+
+
+- Add audio for all sorts of things.
+    - Player ping
+    - Mine reveal echos
+    - Explode
+    - Mode Swap (engine > sonar > engine)
+    - Engine noises?
+    - UI
+        - Navigation
+        - Click.
