@@ -12,11 +12,11 @@ local pd <const> = playdate;
 local display <const> = playdate.display;
 
 Fonts = {
-	normalFont = gfx.font.new("./assets/font/Mini Sans 2X-table-18-20"),
-	outlinedFont = gfx.font.new("./assets/font/Mini Sans Outline 2X-table-18-20")
+	miniSans = gfx.font.new("./assets/font/Mini Sans 2X"),
+	miniMono = gfx.font.new("./assets/font/Mini Mono 2X"),
 };
 
-gfx.setFont(Fonts.normalFont);
+gfx.setFont(Fonts.miniSans);
 
 Scenes = {
 	mainMenu = MainMenu(),

@@ -27,17 +27,23 @@ end
 
 function ModuleLabel:redraw()
     local prevFont = gfx.getFont();
-    local prevDrawMode = gfx.getImageDrawMode();
-
-    gfx.setImageDrawMode(self.drawMode);
-    if(self.selected) then
-        gfx.setFont(Fonts.normalFont);
-    else
-        gfx.setFont(Fonts.outlinedFont);
-    end
+    local prevDrawMode = gfx.getImageDrawMode();    
+    gfx.setFont(Fonts.miniSans);
+    gfx.setImageDrawMode(self.drawMode);    
     local img = gfx.imageWithText(self.text, gfx.getTextSize(self.text));
-    self:setImage(img);
-
-    gfx.setFont(prevFont);
     gfx.setImageDrawMode(prevDrawMode);
+
+    local tmp = img:copy();
+    tmp:clear(gfx.kColorClear);
+
+    gfx.lockFocus(tmp);
+    if(self.selected) then
+        img:draw(0, 0);
+    else
+        img:drawFaded(0, 0, 0.25, gfx.image.kDitherTypeBayer4x4);
+    end
+    gfx.unlockFocus();
+
+    self:setImage(tmp);
+    gfx.setFont(prevFont);
 end

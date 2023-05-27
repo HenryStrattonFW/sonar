@@ -2,14 +2,14 @@
 ---------------------------------------------------------------------------------------
 Tasks to bring us back up to the level of the PlayJam entry.
 ---------------------------------------------------------------------------------------
-- Implement player death + explosion.
+- Implement player death + explosion. 
 
 
 ---------------------------------------------------------------------------------------
 Task to expand and improve the game.
 ---------------------------------------------------------------------------------------
-- Look to replace point grid with alternative water surface sprites?
 - Loading predefined levels from files.
+- Look to replace point grid with alternative water surface sprites?
 - Text-prompt system
     - Potentially with profile image support for dialogue style tutorialization.
     - Mockup potential character + text view.
@@ -20,8 +20,6 @@ Task to expand and improve the game.
 
 
 - Add audio for all sorts of things.
-    - Player ping
-    - Mine reveal echos
     - Explode
     - Mode Swap (engine > sonar > engine)
     - Engine noises?
