@@ -35,6 +35,6 @@ function pd.update()
 							sh/2,
 							kTextAlignment.center);
 		return;
-	 end;
+	end;
 	Engine.update();
 end

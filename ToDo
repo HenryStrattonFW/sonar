@@ -1,3 +1,9 @@
+---------------------------------------------------------------------------------------
+General 'Engine' features/updates.
+---------------------------------------------------------------------------------------
+- Extend structure to allow scene pausing without exiting it.
+- Complete message display text stuff and move to engine.
+    - Extend to support basic choice options as well.
 
 ---------------------------------------------------------------------------------------
 Tasks to bring us back up to the level of the PlayJam entry.
@@ -10,9 +16,6 @@ Task to expand and improve the game.
 ---------------------------------------------------------------------------------------
 - Loading predefined levels from files.
 - Look to replace point grid with alternative water surface sprites?
-- Text-prompt system
-    - Potentially with profile image support for dialogue style tutorialization.
-    - Mockup potential character + text view.
 - Implement save progress (learn the sdk file saving/loading)
 - Design + Implement sonar overcharge + penalties.
 - Shop/Progression system? (upgrade sonar, engine, health, etc)

@@ -18,6 +18,7 @@ import "./scripts/Ping";
 import "./scripts/SeaMine";
 import "./scripts/PingManager";
 import "./scripts/Level";
+import "./scripts/graphics/DialogDisplay";
 
 local pd <const> = playdate;
 local gfx <const> = pd.graphics;
@@ -45,6 +46,7 @@ local mineCount = 15;
 local level;
 local playTimer;
 local hash;
+local dialog;
 
 function GameScene:init()
     GameScene.super.init(self);
@@ -99,6 +101,8 @@ function GameScene:init()
 
     playerPing = Ping();
     pingManager = PingManager();
+
+    dialog = DialogDisplay(0,screenHeight-100, screenWidth, 100, 16);
 end
 
 function GameScene:onEnter()
@@ -135,6 +139,15 @@ function GameScene:onEnter()
     end
 
     playTimer:start();
+
+    dialog:add();
+    dialog.chevron:add();
+
+    local test = {};
+    test[1] = "Le Test";
+    test[2] = "Le more test";
+    test[3] = "A third test? this is just madness at this point.";
+    dialog:show(test);
 end
 
 function GameScene:onExit()
@@ -148,6 +161,8 @@ end
 
 function GameScene:update()
     GameScene.super.update(self);
+    
+    if(dialog:isVisible()) then return end;
 
     -- offset the camera so that we focus the palyer in the center of the screen (more or less.)
     gfx.setDrawOffset(halfScreenWidth - player.x, (halfScreenHeight - player.y) + camOffsetY);
