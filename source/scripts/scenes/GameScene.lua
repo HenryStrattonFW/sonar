@@ -11,6 +11,7 @@ import "./scripts/utils/Stopwatch";
 import "./scripts/ui/ProgressBar";
 import "./scripts/ui/ModuleLabel";
 import "./scripts/ui/StopwatchDisplay";
+import "./scripts/ui/ViewportPin";
 
 import "./scripts/Crankable";
 import "./scripts/Player";
@@ -47,12 +48,13 @@ local level;
 local playTimer;
 local hash;
 local dialog;
+local goalIndicator;
 
 function GameScene:init()
     GameScene.super.init(self);
 
     playTimer = Stopwatch(false);
-
+    
     -- Build the image/sprite that will act as the panel background for our UI
     local boltPanelSlices = gfx.nineSlice.new("./assets/images/ui/ui_panel_bolted", 9, 9, 6, 6);
     local uiPanelImage = gfx.image.new(screenWidth, 50);
@@ -103,6 +105,13 @@ function GameScene:init()
     pingManager = PingManager();
 
     dialog = DialogDisplay(0,screenHeight-100, screenWidth, 100, 16);
+
+    goalIndicator = ViewportPin(
+        gfx.image.new("./assets/images/ui/Flag_Indicator"), 
+        pd.geometry.rect.new(8,8,screenWidth-16, screenHeight-uiPanelSprite.height-16),
+        nil
+    );
+    
 end
 
 function GameScene:onEnter()
@@ -114,6 +123,8 @@ function GameScene:onEnter()
 
     level = Level();
     level:spawnRandomMines(mineCount);
+    goalIndicator.target = level.goalFlag;
+
 
     player:add();
 
@@ -141,13 +152,18 @@ function GameScene:onEnter()
     playTimer:start();
 
     dialog:add();
-    dialog.chevron:add();
 
+    goalIndicator:add();
+
+
+    --[[
     local test = {};
     test[1] = "Le Test";
     test[2] = "Le more test";
     test[3] = "A third test? this is just madness at this point.";
     dialog:show(test);
+    ]]
+
 end
 
 function GameScene:onExit()
@@ -194,19 +210,16 @@ function GameScene:update()
     
     -- confine player to the play area.
     player:moveTo(level:clampToPlayArea(player:getPosition()));
-end
-
-function GameScene:draw()
-    GameScene.super.draw(self);
-end
-
-function GameScene:lateDraw()
-    gfx.setScreenClipRect(0,0,screenWidth, screenHeight-uiPanelSprite.height);
-    playerPing:draw();
-    pingManager:draw();
 
     -- update collisions.
     self:checkCollisions();
+end
+
+function GameScene:lateDraw()
+    GameScene.super.lateDraw(self);
+    gfx.setScreenClipRect(0,0,screenWidth, screenHeight-uiPanelSprite.height);
+    playerPing:draw();
+    pingManager:draw();
 end
 
 

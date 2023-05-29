@@ -13,7 +13,8 @@ local display <const> = playdate.display;
 
 Fonts = {
 	miniSans = gfx.font.new("./assets/font/Mini Sans 2X"),
-	miniMono = gfx.font.new("./assets/font/Mini Mono 2X"),
+	miniMono2 = gfx.font.new("./assets/font/Mini Mono 2X"),
+	miniMono = gfx.font.new("./assets/font/Mini Mono"),
 };
 
 gfx.setFont(Fonts.miniSans);
